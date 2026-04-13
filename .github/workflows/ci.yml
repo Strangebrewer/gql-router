@@ -29,6 +29,23 @@ jobs:
           workload_identity_provider: ${{ env.WIF_PROVIDER }}
           service_account: ${{ env.SERVICE_ACCOUNT }}
 
+      - name: Install rover
+        run: |
+          curl -sSL https://rover.apollo.dev/nix/latest | sh
+          echo "$HOME/.rover/bin" >> $GITHUB_PATH
+
+      - name: Compose supergraph schema
+        env:
+          SUBGRAPH_HOME_MAINTENANCE_URL: ${{ vars.SUBGRAPH_HOME_MAINTENANCE_URL }}
+          SUBGRAPH_RECIPES_URL: ${{ vars.SUBGRAPH_RECIPES_URL }}
+          SUBGRAPH_PROJECT_MGR_URL: ${{ vars.SUBGRAPH_PROJECT_MGR_URL }}
+        run: |
+          envsubst < supergraph.yaml > supergraph-resolved.yaml
+          rover supergraph compose \
+            --config supergraph-resolved.yaml \
+            --output supergraph-schema.graphql \
+            --elv2-license accept
+
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
 
@@ -63,6 +80,23 @@ jobs:
         with:
           workload_identity_provider: ${{ env.WIF_PROVIDER }}
           service_account: ${{ env.SERVICE_ACCOUNT }}
+
+      - name: Install rover
+        run: |
+          curl -sSL https://rover.apollo.dev/nix/latest | sh
+          echo "$HOME/.rover/bin" >> $GITHUB_PATH
+
+      - name: Compose supergraph schema
+        env:
+          SUBGRAPH_HOME_MAINTENANCE_URL: ${{ vars.SUBGRAPH_HOME_MAINTENANCE_URL }}
+          SUBGRAPH_RECIPES_URL: ${{ vars.SUBGRAPH_RECIPES_URL }}
+          SUBGRAPH_PROJECT_MGR_URL: ${{ vars.SUBGRAPH_PROJECT_MGR_URL }}
+        run: |
+          envsubst < supergraph.yaml > supergraph-resolved.yaml
+          rover supergraph compose \
+            --config supergraph-resolved.yaml \
+            --output supergraph-schema.graphql \
+            --elv2-license accept
 
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
