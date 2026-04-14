@@ -41,9 +41,6 @@ jobs:
           SUBGRAPH_PROJECT_MGR_URL: ${{ vars.SUBGRAPH_PROJECT_MGR_URL }}
         run: |
           envsubst < supergraph.yaml > supergraph-resolved.yaml
-          echo "--- supergraph-resolved.yaml ---"
-          cat supergraph-resolved.yaml
-          echo "--------------------------------"
           rover supergraph compose \
             --config supergraph-resolved.yaml \
             --output supergraph-schema.graphql \
@@ -96,9 +93,6 @@ jobs:
           SUBGRAPH_PROJECT_MGR_URL: ${{ vars.SUBGRAPH_PROJECT_MGR_URL }}
         run: |
           envsubst < supergraph.yaml > supergraph-resolved.yaml
-          echo "--- supergraph-resolved.yaml ---"
-          cat supergraph-resolved.yaml
-          echo "--------------------------------"
           rover supergraph compose \
             --config supergraph-resolved.yaml \
             --output supergraph-schema.graphql \

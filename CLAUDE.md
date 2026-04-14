@@ -76,7 +76,6 @@ When a subgraph changes its SDL, redeploy the router — the CI compose step wil
 
 ## Current State
 
-- All config and CI written; not yet deployed
-- `dev` GitHub Environment already has the three subgraph URL vars set
+- Deployed to dev and working
 - `prod` GitHub Environment needs the three subgraph URL vars once prod subgraphs are deployed
 - Prod CORS origins need to be confirmed and added to `router.yaml` before prod deploy
