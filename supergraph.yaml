@@ -1,0 +1,17 @@
+# Subgraph URLs are substituted by envsubst in CI from GitHub Environment variables.
+# Values should be the base Cloud Run URL without a trailing slash or /graphql path.
+# e.g. https://gql-home-maintenance-dev-xxx.us-central1.run.app
+federation_version: =2.7.0
+subgraphs:
+  home-maintenance:
+    routing_url: ${SUBGRAPH_HOME_MAINTENANCE_URL}/graphql
+    schema:
+      subgraph_url: ${SUBGRAPH_HOME_MAINTENANCE_URL}/graphql
+  recipes:
+    routing_url: ${SUBGRAPH_RECIPES_URL}/graphql
+    schema:
+      subgraph_url: ${SUBGRAPH_RECIPES_URL}/graphql
+  project-mgr:
+    routing_url: ${SUBGRAPH_PROJECT_MGR_URL}/graphql
+    schema:
+      subgraph_url: ${SUBGRAPH_PROJECT_MGR_URL}/graphql

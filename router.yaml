@@ -1,0 +1,36 @@
+supergraph:
+  listen: 0.0.0.0:${env.PORT:-4000}
+  introspection: true
+
+sandbox:
+  enabled: true
+
+homepage:
+  enabled: false
+
+cors:
+  policies:
+    - origins:
+        - https://pe-shell-dev.web.app
+        - https://pe-mfe-dashboard-dev.web.app
+        - https://pe-mfe-job-search-dev.web.app
+        - https://pe-mfe-budget-dev.web.app
+        - https://www.borrowedcarbonatoms.com
+        - https://pe-shell.web.app
+        - https://pe-mfe-dashboard.web.app
+        - https://pe-mfe-job-search.web.app
+        - https://pe-mfe-budget.web.app
+  allow_credentials: true
+
+override_subgraph_url:
+  home-maintenance: ${env.SUBGRAPH_HOME_MAINTENANCE_URL}/graphql
+  recipes: ${env.SUBGRAPH_RECIPES_URL}/graphql
+  project-mgr: ${env.SUBGRAPH_PROJECT_MGR_URL}/graphql
+
+headers:
+  all:
+    request:
+      - propagate:
+          named: Authorization
+      - propagate:
+          named: x-trace-id
