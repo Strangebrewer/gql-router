@@ -63,9 +63,8 @@ jobs:
             --platform managed \
             --max-instances 2 \
             --service-account ${{ env.SERVICE_ACCOUNT }} \
-            --set-env-vars SUBGRAPH_HOME_MAINTENANCE_URL=${{ vars.SUBGRAPH_HOME_MAINTENANCE_URL }},SUBGRAPH_RECIPES_URL=${{ vars.SUBGRAPH_RECIPES_URL }},SUBGRAPH_PROJECT_MGR_URL=${{ vars.SUBGRAPH_PROJECT_MGR_URL }} \
+            --set-env-vars SUBGRAPH_HOME_MAINTENANCE_URL=${{ vars.SUBGRAPH_HOME_MAINTENANCE_URL }},SUBGRAPH_RECIPES_URL=${{ vars.SUBGRAPH_RECIPES_URL }},SUBGRAPH_PROJECT_MGR_URL=${{ vars.SUBGRAPH_PROJECT_MGR_URL }},GRAPHQL_PATH=${{ vars.GRAPHQL_PATH }} \
             --allow-unauthenticated
-
   deploy-prod:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
