@@ -15,6 +15,11 @@ cors:
         - https://pe-mfe-dashboard-dev.web.app
         - https://pe-mfe-job-search-dev.web.app
         - https://pe-mfe-budget-dev.web.app
+        - https://www.borrowedcarbonatoms.com
+        - https://pe-shell.web.app
+        - https://pe-mfe-dashboard.web.app
+        - https://pe-mfe-job-search.web.app
+        - https://pe-mfe-budget.web.app
   allow_credentials: true
 
 override_subgraph_url:
